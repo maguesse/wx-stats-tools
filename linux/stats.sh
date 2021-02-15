@@ -32,13 +32,13 @@ function main() {
 	fi
 	while true; do
 		echo $(date "+%Y-%m-%d %H:%M:%S%z")
-	if [ $_top ]; then
+	if [ $_top -eq 1 ]; then
 		top -b -u ${user} -n 1 >> top_${TS}.log
 	fi
-	if [ $_vmstat ]; then
+	if [ $_vmstat -eq 1 ]; then
 		vmstat -t >> vmstat_${TS}.log
 	fi
-	if [ $_iostat ]; then
+	if [ $_iostat -eq 1 ]; then
 		S_TIME_FORMAT=ISO iostat -t >> iostat_${TS}.log
 	fi
 	sleep ${interval}
